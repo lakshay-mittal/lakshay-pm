@@ -27,8 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${spaceMono.variable} ${inter.variable}`}>
-      <body>
-        <main>{children}</main>
+      <body suppressHydrationWarning>
+        <Navbar />
+        <main className="pt-24">{children}</main>
       </body>
     </html>
   );
