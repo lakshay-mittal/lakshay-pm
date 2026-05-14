@@ -80,13 +80,13 @@ export default function PMSimulator() {
 
                 const isCorrect =
                   index === scenario.correct;
-
                 return (
                   <button
                     key={option}
                     onClick={() =>
                       setSelected(index)
                     }
+                    suppressHydrationWarning
                     className={`
                       w-full
                       rounded-2xl

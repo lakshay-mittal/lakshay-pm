@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import * as motion from "motion/react-client";
+import { AnimatePresence } from "motion/react";
 
 const projects = [
   {
@@ -53,6 +55,7 @@ const projects = [
 ];
 
 export default function FeaturedWork() {
+    const [expanded, setExpanded] = useState<number | null>(null);
   return (
     <section
       id="work"
@@ -73,9 +76,15 @@ export default function FeaturedWork() {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-8">
-          {projects.map((project, i) => (
+        <motion.div 
+        layout
+        className="grid gap-8">
+          {projects.map((project, i) => {
+            const isExpanded =
+                expanded === i;
+            return (
             <motion.div
+                layout
               key={project.title}
               initial={{
                 opacity: 0,
@@ -87,9 +96,11 @@ export default function FeaturedWork() {
               }}
               viewport={{ once: true }}
               transition={{
-                duration: 0.5,
-                delay: i * 0.1,
-              }}
+  layout: {
+    duration: 0.45,
+    ease: [0.25, 1, 0.5, 1],
+  },
+}}
               whileHover={{
                 y: -6,
               }}
@@ -102,6 +113,7 @@ export default function FeaturedWork() {
                 transition-all
                 duration-300
                 hover:border-zinc-700
+                cursor-pointer
               "
             >
               <div className="flex flex-col lg:flex-row justify-between gap-8">
@@ -159,6 +171,12 @@ export default function FeaturedWork() {
                   </div>
 
                   <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setExpanded(
+                    isExpanded ? null : i
+                    );
+                }}
                   suppressHydrationWarning
                     className="
                       mt-10
@@ -170,14 +188,81 @@ export default function FeaturedWork() {
                       transition
                     "
                   >
-                    View Case Study →
+                    {isExpanded
+                    ? "Hide Case Study ↑"
+                    : "View Case Study →"}
                   </button>
                 </div>
+</div>
+                 <AnimatePresence initial={false}>
+  {isExpanded && (
+    <motion.div
+      layout
+      initial={{
+        opacity: 0,
+        height: 0,
+      }}
+      animate={{
+        opacity: 1,
+        height: "auto",
+      }}
+      exit={{
+        opacity: 0,
+        height: 0,
+      }}
+      transition={{
+        duration: 0.55,
+        ease: [0.25, 1, 0.36, 1],
+      }}
+      className="overflow-hidden"
+    >
+        <div
+  className="
+    mt-10
+    border-t border-zinc-800
+    pt-8
+  "
+>
+  <div className="grid lg:grid-cols-2 gap-10">
 
-              </div>
-            </motion.div>
-          ))}
+        {/* Left */}
+        <div>
+          <p className="text-amber-400 mb-4">
+            What I Built
+          </p>
+
+          <ul className="space-y-3 text-zinc-400">
+            <li>• Workflow design</li>
+            <li>• User flows</li>
+            <li>• Threshold logic</li>
+            <li>• Exception handling</li>
+          </ul>
         </div>
+
+        {/* Right */}
+        <div>
+          <p className="text-amber-400 mb-4">
+            Key PM Learning
+          </p>
+
+          <p className="text-zinc-400 leading-8">
+            Building B2B operational
+            software taught me that
+            visibility alone is not
+            enough — users need
+            interventions.
+          </p>
+        </div>
+
+      </div>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence> 
+              
+            </motion.div>
+          )})}
+        </motion.div>
       </div>
     </section>
   );
