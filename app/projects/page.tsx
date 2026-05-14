@@ -25,6 +25,7 @@ export default function Projects() {
           {filters.map((f) => (
             <button
               key={f}
+              suppressHydrationWarning
               onClick={() => setActive(f)}
               className={`font-display text-xs px-4 py-2 rounded border transition-colors ${
                 active === f
