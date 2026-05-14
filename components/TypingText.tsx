@@ -7,12 +7,9 @@ type TypingTextProps = {
   delay?: number;
 };
 
-export default function TypingText({
-  text,
-  delay = 0,
-}: TypingTextProps) {
+export default function TypingText({ text, delay = 0 }: TypingTextProps) {
   return (
-    <div className="flex items-center text-amber-400 font-mono">
+    <div className="flex items-center font-mono text-amber-400">
       <motion.p
         initial={{ width: 0 }}
         animate={{ width: "fit-content" }}
@@ -21,10 +18,7 @@ export default function TypingText({
           delay,
           ease: "easeInOut",
         }}
-        className="
-          overflow-hidden
-          whitespace-nowrap
-        "
+        className="overflow-hidden whitespace-nowrap"
       >
         {text}
       </motion.p>

@@ -17,7 +17,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Lakshay Mittal — Product Manager",
-  description: "PM portfolio of Lakshay Mittal. IIM Indore MBA, ex-JPMorgan SE.",
+  description:
+    "PM portfolio of Lakshay Mittal. IIM Indore MBA, ex-JPMorgan SE.",
 };
 
 export default function RootLayout({

@@ -17,9 +17,7 @@ export default function HeroTerminal() {
     damping: 18,
   });
 
-  const handleMouseMove = (
-    e: React.MouseEvent<HTMLDivElement>
-  ) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
 
     const width = rect.width;
@@ -28,11 +26,9 @@ export default function HeroTerminal() {
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
 
-    const rotateYValue =
-      ((mouseX - width / 2) / width) * 15;
+    const rotateYValue = ((mouseX - width / 2) / width) * 15;
 
-    const rotateXValue =
-      -((mouseY - height / 2) / height) * 15;
+    const rotateXValue = -((mouseY - height / 2) / height) * 15;
 
     rotateX.set(rotateXValue);
     rotateY.set(rotateYValue);
@@ -44,120 +40,75 @@ export default function HeroTerminal() {
   };
   return (
     <div
-  className="[perspective:1400px]"
-  onMouseMove={handleMouseMove}
-  onMouseLeave={handleMouseLeave}
+      className="[perspective:1400px]"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
-    <motion.div
-      initial={{ opacity: 0, x: 40 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7 }}
-
-      whileHover={{
-        scale: 1.02,
-      }}
-
-      style={{
-        rotateX: smoothRotateX,
-        rotateY: smoothRotateY,
-        transformStyle: "preserve-3d",
-      }}
-
-      className="
-        rounded-[28px]
-        border border-zinc-800
-        bg-zinc-900/70
-        backdrop-blur-xl
-        overflow-hidden
-        shadow-2xl
-        shadow-black/50
-        hover:shadow-amber-500/10
-        will-change-transform
-        transition-shadow
-        duration-300
-        hover:shadow-amber-500/10
-      "
-    >
-      {/* Top bar */}
-      <div className="flex items-center gap-2 px-5 py-4 border-b border-zinc-800">
-        <div className="w-3 h-3 rounded-full bg-red-500" />
-        <div className="w-3 h-3 rounded-full bg-yellow-500" />
-        <div className="w-3 h-3 rounded-full bg-green-500" />
-      </div>
-
-      <div className="p-6 space-y-6 font-mono text-sm">
-        {/* whoami */}
-        <div>
-          <TypingText
-            text="$ whoami"
-            delay={0.2}
-          />
-
-          <p className="text-zinc-200 mt-2">
-            Lakshay Mittal
-          </p>
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        whileHover={{
+          scale: 1.02,
+        }}
+        style={{
+          rotateX: smoothRotateX,
+          rotateY: smoothRotateY,
+          transformStyle: "preserve-3d",
+        }}
+        className="overflow-hidden rounded-[28px] border border-zinc-800 bg-zinc-900/70 shadow-2xl shadow-black/50 backdrop-blur-xl transition-shadow duration-300 will-change-transform hover:shadow-amber-500/10"
+      >
+        {/* Top bar */}
+        <div className="flex items-center gap-2 border-b border-zinc-800 px-5 py-4">
+          <div className="h-3 w-3 rounded-full bg-red-500" />
+          <div className="h-3 w-3 rounded-full bg-yellow-500" />
+          <div className="h-3 w-3 rounded-full bg-green-500" />
         </div>
 
-        {/* focus */}
-        <div>
-          <TypingText
-            text="$ current_focus"
-            delay={0.6}
-          />
+        <div className="space-y-6 p-6 font-mono text-sm">
+          {/* whoami */}
+          <div>
+            <TypingText text="$ whoami" delay={0.2} />
 
-          <p className="text-zinc-300 mt-2 leading-7">
-            Building products for fleet
-            intelligence and vehicle
-            tracking systems.
-          </p>
-        </div>
+            <p className="mt-2 text-zinc-200">Lakshay Mittal</p>
+          </div>
 
-        {/* strengths */}
-        <div>
-          <TypingText
-            text="$ strengths"
-            delay={1}
-          />
+          {/* focus */}
+          <div>
+            <TypingText text="$ current_focus" delay={0.6} />
 
-          <div className="space-y-4 mt-4">
-            <SkillBar
-              label="Technical Depth"
-              width="95%"
-            />
+            <p className="mt-2 leading-7 text-zinc-300">
+              Building products for fleet intelligence and vehicle tracking
+              systems.
+            </p>
+          </div>
 
-            <SkillBar
-              label="Product Thinking"
-              width="88%"
-            />
+          {/* strengths */}
+          <div>
+            <TypingText text="$ strengths" delay={1} />
 
-            <SkillBar
-              label="Execution"
-              width="90%"
-            />
+            <div className="mt-4 space-y-4">
+              <SkillBar label="Technical Depth" width="95%" />
+
+              <SkillBar label="Product Thinking" width="88%" />
+
+              <SkillBar label="Execution" width="90%" />
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
     </div>
   );
 }
 
-function SkillBar({
-  label,
-  width,
-}: {
-  label: string;
-  width: string;
-}) {
+function SkillBar({ label, width }: { label: string; width: string }) {
   return (
     <div>
-      <div className="flex justify-between mb-2">
-        <span className="text-zinc-300">
-          {label}
-        </span>
+      <div className="mb-2 flex justify-between">
+        <span className="text-zinc-300">{label}</span>
       </div>
 
-      <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
+      <div className="h-2 overflow-hidden rounded-full bg-zinc-800">
         <motion.div
           initial={{ width: 0 }}
           animate={{ width }}
@@ -165,7 +116,7 @@ function SkillBar({
             duration: 1,
             delay: 0.3,
           }}
-          className="h-full bg-amber-400 rounded-full"
+          className="h-full rounded-full bg-amber-400"
         />
       </div>
     </div>

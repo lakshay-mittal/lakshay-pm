@@ -15,26 +15,19 @@ const projects = [
     approach:
       "Designed workflows for tracking, delay management, threshold configuration and intervention UX.",
 
-    decision:
-      "Prioritized actionable interventions over dashboard complexity.",
+    decision: "Prioritized actionable interventions over dashboard complexity.",
 
     impact:
       "Improved visibility into delivery journeys and surfaced operational bottlenecks.",
 
-    tags: [
-      "Product Strategy",
-      "UX",
-      "Analytics",
-      "Fleet Tech",
-    ],
+    tags: ["Product Strategy", "UX", "Analytics", "Fleet Tech"],
   },
 
   {
     title: "PM Interview Simulator",
     role: "Side Project",
 
-    problem:
-      "PM candidates struggle to simulate realistic product interviews.",
+    problem: "PM candidates struggle to simulate realistic product interviews.",
 
     approach:
       "Built an interactive interview practice experience using Lovable.",
@@ -42,248 +35,238 @@ const projects = [
     decision:
       "Focused on structured PM thinking rather than generic answer generation.",
 
-    impact:
-      "Created realistic interview simulation for product candidates.",
+    impact: "Created realistic interview simulation for product candidates.",
 
-    tags: [
-      "AI",
-      "Product Thinking",
-      "UX",
-      "Experimentation",
-    ],
+    tags: ["AI", "Product Thinking", "UX", "Experimentation"],
   },
 ];
 
 export default function FeaturedWork() {
-    const [expanded, setExpanded] = useState<number | null>(null);
+  const [expanded, setExpanded] = useState<number | null>(null);
   return (
-    <section
-      id="work"
-      className="py-32 px-8"
-    >
-      <div className="max-w-6xl mx-auto">
-
+    <section id="work" className="px-8 py-32">
+      <div className="mx-auto max-w-6xl">
         {/* Heading */}
         <div className="mb-16">
-          <p className="text-amber-400 text-sm tracking-[0.2em] mb-4">
+          <p className="mb-4 text-sm tracking-[0.2em] text-amber-400">
             FEATURED WORK
           </p>
 
-          <h2 className="text-4xl lg:text-5xl font-bold">
-            Products I've built &
-            problems I've solved.
+          <h2 className="text-4xl font-bold lg:text-5xl">
+            Products I've built & problems I've solved.
           </h2>
         </div>
 
         {/* Cards */}
-        <motion.div 
-        layout
-        className="grid gap-8">
+        <motion.div layout className="grid gap-8">
           {projects.map((project, i) => {
-            const isExpanded =
-                expanded === i;
+            const isExpanded = expanded === i;
             return (
-            <motion.div
+              <motion.div
                 layout
-              key={project.title}
-              initial={{
-                opacity: 0,
-                y: 40,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-  layout: {
-    duration: 0.45,
-    ease: [0.25, 1, 0.5, 1],
-  },
-}}
-              whileHover={{
-                y: -6,
-              }}
-              className="
-                border border-zinc-800
-                rounded-[32px]
-                p-8
-                bg-zinc-900/40
-                backdrop-blur-xl
-                transition-all
-                duration-300
-                hover:border-zinc-700
-                cursor-pointer
-              "
-            >
-              <div className="flex flex-col lg:flex-row justify-between gap-8">
-
-                {/* Left */}
-                <div className="flex-1">
-                  <p className="text-zinc-500 text-sm mb-3">
-                    {project.role}
-                  </p>
-
-                  <h3 className="text-3xl font-semibold mb-8">
-                    {project.title}
-                  </h3>
-
-                  <div className="space-y-6">
-                    <InfoBlock
-                      title="Problem"
-                      text={project.problem}
-                    />
-
-                    <InfoBlock
-                      title="Approach"
-                      text={project.approach}
-                    />
-
-                    <InfoBlock
-                      title="Key Decision"
-                      text={project.decision}
-                    />
-
-                    <InfoBlock
-                      title="Impact"
-                      text={project.impact}
-                    />
-                  </div>
-                </div>
-
-                {/* Right */}
-                <div className="lg:w-[280px] flex flex-col justify-between">
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="
-                          px-3 py-1
-                          rounded-full
-                          bg-zinc-800
-                          text-sm
-                          text-zinc-300
-                        "
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setExpanded(
-                    isExpanded ? null : i
-                    );
+                key={project.title}
+                initial={{
+                  opacity: 0,
+                  y: 40,
                 }}
-                  suppressHydrationWarning
-                    className="
-                      mt-10
-                      border border-amber-400/30
-                      rounded-full
-                      px-5 py-3
-                      text-amber-400
-                      hover:bg-amber-400/10
-                      transition
-                    "
-                  >
-                    {isExpanded
-                    ? "Hide Case Study ↑"
-                    : "View Case Study →"}
-                  </button>
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  layout: {
+                    duration: 0.45,
+                    ease: [0.25, 1, 0.5, 1],
+                  },
+                }}
+                whileHover={{
+                  y: -6,
+                }}
+                className="cursor-pointer rounded-[32px] border border-zinc-800 bg-zinc-900/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-zinc-700"
+              >
+                <div className="flex flex-col justify-between gap-8 lg:flex-row">
+                  {/* Left */}
+                  <div className="flex-1">
+                    <p className="mb-3 text-sm text-zinc-500">{project.role}</p>
+
+                    <h3 className="mb-8 text-3xl font-semibold">
+                      {project.title}
+                    </h3>
+
+                    <div className="space-y-6">
+                      <InfoBlock title="Problem" text={project.problem} />
+
+                      <InfoBlock title="Approach" text={project.approach} />
+
+                      <InfoBlock title="Key Decision" text={project.decision} />
+
+                      <InfoBlock title="Impact" text={project.impact} />
+                    </div>
+                  </div>
+
+                  {/* Right */}
+                  <div className="flex flex-col justify-between lg:w-[280px]">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-zinc-800 px-3 py-1 text-sm text-zinc-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpanded(isExpanded ? null : i);
+                      }}
+                      suppressHydrationWarning
+                      className="mt-10 rounded-full border border-amber-400/30 px-5 py-3 text-amber-400 transition hover:bg-amber-400/10"
+                    >
+                      {isExpanded ? "Hide Case Study ↑" : "View Case Study →"}
+                    </button>
+                  </div>
                 </div>
-</div>
-                 <AnimatePresence initial={false}>
-  {isExpanded && (
-    <motion.div
-      layout
-      initial={{
-        opacity: 0,
-        height: 0,
-      }}
-      animate={{
-        opacity: 1,
-        height: "auto",
-      }}
-      exit={{
-        opacity: 0,
-        height: 0,
-      }}
-      transition={{
-        duration: 0.55,
-        ease: [0.25, 1, 0.36, 1],
-      }}
-      className="overflow-hidden"
-    >
-        <div
-  className="
-    mt-10
-    border-t border-zinc-800
-    pt-8
-  "
->
-  <div className="grid lg:grid-cols-2 gap-10">
+                <AnimatePresence initial={false}>
+                  {isExpanded && (
+                    <motion.div
+                      layout
+                      initial={{
+                        opacity: 0,
+                        height: 0,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        height: "auto",
+                      }}
+                      exit={{
+                        opacity: 0,
+                        height: 0,
+                      }}
+                      transition={{
+                        duration: 0.55,
+                        ease: [0.25, 1, 0.36, 1],
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <div className="mt-10 border-t border-zinc-800 pt-8">
+                        <div>
+                          <div className="space-y-10">
+                            {/* PM Thinking */}
+                            <div>
+                              <p className="mb-5 text-sm tracking-[0.2em] text-amber-400">
+                                PRODUCT THINKING
+                              </p>
 
-        {/* Left */}
-        <div>
-          <p className="text-amber-400 mb-4">
-            What I Built
-          </p>
+                              <div className="grid gap-6 md:grid-cols-2">
+                                <CaseBlock
+                                  title="Challenge"
+                                  text="Fleet managers lacked proactive visibility into delayed deliveries and exception handling."
+                                />
 
-          <ul className="space-y-3 text-zinc-400">
-            <li>• Workflow design</li>
-            <li>• User flows</li>
-            <li>• Threshold logic</li>
-            <li>• Exception handling</li>
-          </ul>
-        </div>
+                                <CaseBlock
+                                  title="Constraint"
+                                  text="The solution had to work across fragmented OEM logistics systems and operational workflows."
+                                />
 
-        {/* Right */}
-        <div>
-          <p className="text-amber-400 mb-4">
-            Key PM Learning
-          </p>
+                                <CaseBlock
+                                  title="Tradeoff"
+                                  text="Prioritized actionable interventions over excessive dashboard complexity."
+                                />
 
-          <p className="text-zinc-400 leading-8">
-            Building B2B operational
-            software taught me that
-            visibility alone is not
-            enough — users need
-            interventions.
-          </p>
-        </div>
+                                <CaseBlock
+                                  title="Outcome"
+                                  text="Created a clearer operational workflow for pre-delivery tracking and exception management."
+                                />
+                              </div>
+                            </div>
 
-      </div>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence> 
-              
-            </motion.div>
-          )})}
+                            {/* Decision Framework */}
+                            <div>
+                              <p className="mb-5 text-sm tracking-[0.2em] text-amber-400">
+                                MY DECISION FRAMEWORK
+                              </p>
+
+                              <div className="grid gap-4 md:grid-cols-4">
+                                {[
+                                  "Understand delivery friction",
+                                  "Identify intervention points",
+                                  "Reduce operational ambiguity",
+                                  "Design for actionability",
+                                ].map((step, index) => (
+                                  <motion.div
+                                    key={step}
+                                    initial={{
+                                      opacity: 0,
+                                      y: 20,
+                                    }}
+                                    animate={{
+                                      opacity: 1,
+                                      y: 0,
+                                    }}
+                                    transition={{
+                                      delay: index * 0.08,
+                                    }}
+                                    className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5"
+                                  >
+                                    <p className="mb-3 text-sm text-amber-400">
+                                      0{index + 1}
+                                    </p>
+
+                                    <p className="text-sm leading-6 text-zinc-300">
+                                      {step}
+                                    </p>
+                                  </motion.div>
+                                ))}
+                              </div>
+                            </div>
+
+                            {/* Future Thinking */}
+                            <div>
+                              <p className="mb-4 text-sm tracking-[0.2em] text-amber-400">
+                                WHAT I WOULD DO NEXT
+                              </p>
+
+                              <p className="max-w-3xl leading-8 text-zinc-400">
+                                Introduce predictive delay intelligence, smarter
+                                thresholds, and intervention recommendations to
+                                reduce manual fleet monitoring effort.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
   );
 }
 
-function InfoBlock({
-  title,
-  text,
-}: {
-  title: string;
-  text: string;
-}) {
+function CaseBlock({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="rounded-3xl border border-zinc-800 bg-zinc-900/40 p-6">
+      <p className="mb-3 text-amber-400">{title}</p>
+
+      <p className="leading-7 text-zinc-400">{text}</p>
+    </div>
+  );
+}
+
+function InfoBlock({ title, text }: { title: string; text: string }) {
   return (
     <div>
-      <p className="text-amber-400 text-sm mb-2">
-        {title}
-      </p>
+      <p className="mb-2 text-sm text-amber-400">{title}</p>
 
-      <p className="text-zinc-400 leading-7">
-        {text}
-      </p>
+      <p className="leading-7 text-zinc-400">{text}</p>
     </div>
   );
 }

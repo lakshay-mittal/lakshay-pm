@@ -5,9 +5,8 @@ import { motion } from "motion/react";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center">
-      <div className="max-w-6xl mx-auto px-8 grid lg:grid-cols-2 gap-20 items-center">
-
+    <section className="flex min-h-screen items-center">
+      <div className="mx-auto grid max-w-6xl items-center gap-20 px-8 lg:grid-cols-2">
         {/* LEFT SIDE */}
         <motion.div
           initial={{
@@ -22,28 +21,22 @@ export default function Hero() {
             duration: 0.7,
           }}
         >
-          <p className="text-amber-400 tracking-[0.2em] mb-5 text-sm">
+          <p className="mb-5 text-sm tracking-[0.2em] text-amber-400">
             PRODUCT MANAGER • BUILDER
           </p>
 
-          <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+          <h1 className="text-5xl leading-tight font-bold lg:text-7xl">
             Building products where{" "}
-            <span className="text-amber-400">
-              technology
-            </span>{" "}
-            meets business.
+            <span className="text-amber-400">technology</span> meets business.
           </h1>
 
-          <p className="mt-8 text-zinc-400 text-lg leading-8 max-w-xl">
-            MBA candidate at IIM Indore,
-            ex-JPMorgan engineer,
-            and product intern building
-            fleet intelligence systems.
+          <p className="mt-8 max-w-xl text-lg leading-8 text-zinc-400">
+            MBA candidate at IIM Indore, ex-JPMorgan engineer, and product
+            intern building fleet intelligence systems.
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-wrap gap-5 mt-10">
-
+          <div className="mt-10 flex flex-wrap gap-5">
             <motion.a
               whileHover={{
                 scale: 1.04,
@@ -52,13 +45,7 @@ export default function Hero() {
                 scale: 0.98,
               }}
               href="#work"
-              className="
-                bg-amber-400
-                text-black
-                px-6 py-3
-                rounded-full
-                font-medium
-              "
+              className="rounded-full bg-amber-400 px-6 py-3 font-medium text-black"
             >
               Explore Work
             </motion.a>
@@ -71,17 +58,10 @@ export default function Hero() {
                 scale: 0.98,
               }}
               href="#playground"
-              className="
-                border border-zinc-700
-                px-6 py-3
-                rounded-full
-                hover:border-zinc-500
-                transition
-              "
+              className="rounded-full border border-zinc-700 px-6 py-3 transition hover:border-zinc-500"
             >
               Try PM Simulator
             </motion.a>
-
           </div>
         </motion.div>
 
