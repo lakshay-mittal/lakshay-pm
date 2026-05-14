@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
+import { useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -14,7 +15,13 @@ const links = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
 
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 20,
+    restDelta: 0.001,
+  });
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -71,6 +78,13 @@ export default function Navbar() {
           Resume ↗
         </a>
       </div>
+      <motion.div
+        style={{
+          scaleX,
+          transformOrigin: "left",
+        }}
+        className="absolute bottom-0 left-0 h-[1px] w-full bg-amber-400"
+      />
     </motion.nav>
   );
 }
