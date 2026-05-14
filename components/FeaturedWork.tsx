@@ -83,7 +83,7 @@ export default function FeaturedWork() {
                 whileHover={{
                   y: -6,
                 }}
-                className="cursor-pointer rounded-[32px] border border-zinc-800 bg-zinc-900/40 p-8 backdrop-blur-xl transition-all duration-300 hover:border-zinc-700"
+                className="cursor-pointer rounded-[32px] border border-zinc-800 bg-zinc-900/50 p-8 backdrop-blur-xl transition-all duration-300 hover:border-amber-400/30 hover:bg-zinc-900/70"
               >
                 <div className="flex flex-col justify-between gap-8 lg:flex-row">
                   {/* Left */}
