@@ -3,6 +3,7 @@
 import { useState } from "react";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
+import MagneticButton from "./MagneticButton";
 
 const projects = [
   {
@@ -118,16 +119,18 @@ export default function FeaturedWork() {
                       ))}
                     </div>
 
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setExpanded(isExpanded ? null : i);
-                      }}
-                      suppressHydrationWarning
-                      className="mt-10 rounded-full border border-amber-400/30 px-5 py-3 text-amber-400 transition hover:bg-amber-400/10"
-                    >
-                      {isExpanded ? "Hide Case Study ↑" : "View Case Study →"}
-                    </button>
+                    <MagneticButton>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpanded(isExpanded ? null : i);
+                        }}
+                        suppressHydrationWarning
+                        className="mt-10 rounded-full border border-amber-400/30 px-5 py-3 text-amber-400 transition hover:bg-amber-400/10"
+                      >
+                        {isExpanded ? "Hide Case Study ↑" : "View Case Study →"}
+                      </button>
+                    </MagneticButton>
                   </div>
                 </div>
                 <AnimatePresence initial={false}>

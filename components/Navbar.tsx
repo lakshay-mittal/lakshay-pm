@@ -4,6 +4,7 @@ import Link from "next/link";
 import * as motion from "motion/react-client";
 import { useScroll, useSpring } from "motion/react";
 import { useEffect, useState } from "react";
+import MagneticButton from "./MagneticButton";
 
 const links = [
   { href: "#work", label: "Work" },
@@ -70,13 +71,15 @@ export default function Navbar() {
         </div>
 
         {/* Resume Button */}
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          className="rounded-full border border-amber-400/30 px-5 py-2 text-sm text-amber-400 transition-all duration-300 hover:-translate-y-0.5 hover:bg-amber-400/10 hover:shadow-lg hover:shadow-amber-500/10"
-        >
-          Resume ↗
-        </a>
+        <MagneticButton>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            className="rounded-full border border-amber-400/30 px-4 py-2 text-sm text-amber-400 transition hover:bg-amber-400/10"
+          >
+            Resume ↗
+          </a>
+        </MagneticButton>
       </div>
       <motion.div
         style={{
